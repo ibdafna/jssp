@@ -1,0 +1,15 @@
+{
+  "name": "jssp",
+  "version": "0.0.1",
+  "description": "JavaScript/TypeScript Single Page",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Itay Dafna",
+  "license": "MIT",
+  "devDependencies": {
+    "tslib": "^2.3.0",
+    "typescript": "^4.3.5"
+  }
+}
