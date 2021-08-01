@@ -16,12 +16,33 @@
     #ff75a0;
 }
 
+a,
+a:hover,
+a:visited {
+  color: unset;
+  text-decoration: none; /* no underline */
+}
+
 html,
 body {
   height: 100vh;
   margin: 0;
   padding: 0;
-  font-family: "Bubblegum Sans", cursive;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.navBar {
+  color: #6fcf97;
+  border-bottom: 1px solid;
+  border-bottom-color: rgb(126, 126, 126, 0.2);
+  justify-content: space-between;
+  grid-area: navbar;
+  height: 100%;
+}
+
+.appContainer {
+  grid-area: container;
+  height: 100%;
 }
 
 .masterContainer {
@@ -29,12 +50,44 @@ body {
   height: 100%;
   align-items: center;
   justify-content: space-evenly;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr 5fr;
   background: var(--background);
-  /* grid-template-areas:
-      "header header"
-      "pc1 pc2"
-      "pc1 pc2"
-      "pc1 pc2"
-      "pc1 pc2"
-      "pc1 pc2"; */
+  grid-template-areas:
+    "navbar navbar navbar navbar"
+    "container container container container";
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.hpad {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.link {
+  cursor: pointer;
+}
+
+.logo {
+  color: pink !important;
+  font-size: 2em;
+  font-family: "Bubblegum Sans", cursive;
+}
+
+.linkContainer {
+  width: 120px;
+  justify-content: space-between;
+}
+
+.contentPage {
+  justify-content: center;
+  height: 100%;
+}
+
+.jumboTitle {
+  color: #ff75a0;
 }
