@@ -11,6 +11,16 @@ export class Router {
   }
 
   /**
+   * Add multiple routes to Router
+   * @param routeObjects
+   */
+  addRoutes(routeObjects: RouteObject[]) {
+    for (const routeObj of routeObjects) {
+      this.addRoute(routeObj);
+    }
+  }
+
+  /**
    * Add a route
    * @param routeObject
    */
