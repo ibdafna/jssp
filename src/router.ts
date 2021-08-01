@@ -8,15 +8,15 @@ export class Router {
     this.container = htmlContainer;
     this.routes = new Map();
     this.currentPath = "/";
-    this.setUpListeners();
+    this.setupListeners();
+    this.setupPopstate();
   }
 
   /**
    * Adds an event listener to make sure hrefs
    * are intercepted correctly
    */
-  private setUpListeners() {
-    document.body.addEventListener("popstate", () => console.log("popstate!!"));
+  private setupListeners() {
     document.body.addEventListener("click", (e: Event) => {
       const target = e.target as HTMLAnchorElement;
       if (target.nodeName === "A") {
@@ -24,9 +24,18 @@ export class Router {
           e.preventDefault();
           const url = new URL(target.href);
           if (this.routes.has(url.pathname)) {
+            history.pushState({}, url.pathname, url.toString());
             this.navigateTo(url.pathname);
           }
         }
+      }
+    });
+  }
+
+  private setupPopstate() {
+    window.addEventListener("popstate", (e: Event) => {
+      if (this.routes.has(location.pathname)) {
+        this.navigateTo(location.pathname);
       }
     });
   }
