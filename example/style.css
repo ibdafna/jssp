@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+/* Variables */
+:root {
+  --background: #121212;
+  --subtle: #1b1b1b;
+  --pink: #ff75a0;
+  --green: #6fcf97;
+  --yellow: #f2c94c;
+  --swoosh: #2f80ed;
+  --candy: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%),
+    #ff75a0;
+}
+
+html,
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: "Bubblegum Sans", cursive;
+}
+
+.masterContainer {
+  display: grid;
+  height: 100%;
+  align-items: center;
+  justify-content: space-evenly;
+  background: var(--background);
+  /* grid-template-areas:
+      "header header"
+      "pc1 pc2"
+      "pc1 pc2"
+      "pc1 pc2"
+      "pc1 pc2"
+      "pc1 pc2"; */
+}
