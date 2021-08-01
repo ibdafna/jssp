@@ -8,6 +8,27 @@ export class Router {
     this.container = htmlContainer;
     this.routes = new Map();
     this.currentPath = "/";
+    this.setUpListeners();
+  }
+
+  /**
+   * Adds an event listener to make sure hrefs
+   * are intercepted correctly
+   */
+  private setUpListeners() {
+    document.body.addEventListener("popstate", () => console.log("popstate!!"));
+    document.body.addEventListener("click", (e: Event) => {
+      const target = e.target as HTMLAnchorElement;
+      if (target.nodeName === "A") {
+        if (target.href !== undefined) {
+          e.preventDefault();
+          const url = new URL(target.href);
+          if (this.routes.has(url.pathname)) {
+            this.navigateTo(url.pathname);
+          }
+        }
+      }
+    });
   }
 
   /**
