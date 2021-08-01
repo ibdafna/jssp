@@ -1,0 +1,15 @@
+{
+  "name": "example-jssp",
+  "version": "0.0.1",
+  "description": "Example app using JS/TS Single-Page",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel index.html"
+  },
+  "author": "Itay Dafna",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.0.0-beta.2"
+  }
+}
