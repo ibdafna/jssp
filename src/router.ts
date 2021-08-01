@@ -10,21 +10,37 @@ export class Router {
     this.currentPath = "/";
   }
 
+  /**
+   * Add a route
+   * @param routeObject
+   */
   addRoute(routeObject: RouteObject) {
     const { routePath, routePage } = routeObject;
     this.routes.set(routePath, new routePage(routePath, this.container));
   }
 
+  /**
+   * Remove a route
+   * @param routePath
+   */
   removeRoute(routePath: string) {
     if (this.routes.has(routePath)) {
       this.routes.delete(routePath);
     }
   }
 
+  /**
+   * Returns a list of all routes
+   * @returns
+   */
   getRoutes() {
     return Array.from(this.routes);
   }
 
+  /**
+   * Renders the page associated with the target route
+   * @param routePath
+   */
   async navigateTo(routePath: string) {
     if (this.routes.has(routePath)) {
       // Call clean up routine of existing page
@@ -33,10 +49,9 @@ export class Router {
       this.currentPath = routePath;
       // Pre-render
       const skipRender = await this.routes.get(routePath)!.pre();
-
       // Render page
       if (!skipRender) {
-        this.routes.get(routePath).render();
+        this.routes.get(routePath)!.render();
       }
     }
   }
