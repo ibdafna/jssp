@@ -60,7 +60,7 @@ export function addChildren(
  * @param listenerArgs
  * @param addlArgs
  */
-export function event(
+export function addEvent(
   target: HTMLElement,
   type: string,
   callback: (e: Event, addlArgs?: CallbackCargo) => void,

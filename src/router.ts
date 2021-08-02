@@ -84,13 +84,15 @@ export class Router {
   async navigateTo(routePath: string) {
     if (this.routes.has(routePath)) {
       // Call clean up routine of existing page
-      this.routes.get(this.currentPath)!.post();
-      // Change path pointer
-      this.currentPath = routePath;
+      let skipRender = await this.routes.get(this.currentPath)!.post();
+
       // Pre-render
-      const skipRender = await this.routes.get(routePath)!.pre();
+      skipRender = skipRender || (await this.routes.get(routePath)!.pre());
+
       // Render page
       if (!skipRender) {
+        // Change path pointer
+        this.currentPath = routePath;
         this.routes.get(routePath)!.render();
       }
     }
