@@ -1,7 +1,12 @@
+import { Router } from "./router";
+import { StateManager } from "./statemanager";
+
 export abstract class BasePage {
   constructor(routePath: string, containerElement: HTMLElement) {
     this.routePath = routePath;
     this.container = containerElement;
+    this.stateManager = StateManager.getInstance();
+    this.router = StateManager.getRouter();
   }
 
   /**
@@ -29,6 +34,8 @@ export abstract class BasePage {
 
   protected routePath: string;
   protected container: HTMLElement;
+  protected stateManager: StateManager;
+  protected router: Router;
 }
 
 export interface IBasePage {
